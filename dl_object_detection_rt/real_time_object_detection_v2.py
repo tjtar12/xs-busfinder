@@ -2,7 +2,7 @@
 # python real_time_object_detection.py --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
 
 # import the necessary packages
-from imutils.video import VideoStream
+from imutils.video import FileVideoStream
 from imutils.video import FPS
 import numpy as np
 import argparse
@@ -36,12 +36,15 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 # initialize the video stream, allow the cammera sensor to warmup,
 # and initialize the FPS counter
 print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
+#vs = VideoStream(src=0).start()
+#vs = cv2.VideoCapture('bus_trials.mp4')
+vs = FileVideoStream('bus_trials.mp4')
 time.sleep(2.0)
 fps = FPS().start()
 
 # loop over the frames from the video stream
 while True:
+	print("[INFO] frame")
 	# grab the frame from the threaded video stream and resize it
 	# to have a maximum width of 400 pixels
 	frame = vs.read()

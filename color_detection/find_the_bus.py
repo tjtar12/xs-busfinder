@@ -2,6 +2,7 @@
 import numpy as np
 import argparse
 import cv2
+from matplotlib import pyplot as plt
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -11,10 +12,10 @@ args = vars(ap.parse_args())
 # load the image
 image = cv2.imread(args["image"])
 
-# define the list of boundaries
+# define the list of boundaries BGR
 boundaries = [
 #	([165,105,245], [178,116,252])
-([100,100,200], [200,150,252])
+([0,100,200], [10,150,252])
 ]
 
 # loop over the boundaries
@@ -27,6 +28,15 @@ for (lower, upper) in boundaries:
 	# the mask
 	mask = cv2.inRange(image, lower, upper)
 	output = cv2.bitwise_and(image, image, mask = mask)
+
+	# img = cv2.imread('home.jpg')
+	color = ('b','g','r')
+	for i,col in enumerate(color):
+	    histr = cv2.calcHist([image],[i],None,[256],[0,256])
+	    plt.plot(histr,color = col)
+	    plt.xlim([0,256])
+	plt.show()
+
 
 	# show the images
 	cv2.imshow("images", np.hstack([image, output]))
