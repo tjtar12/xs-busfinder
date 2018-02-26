@@ -39,6 +39,9 @@ while True:
 	if not grabbed:
 		break
 
+
+
+
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
