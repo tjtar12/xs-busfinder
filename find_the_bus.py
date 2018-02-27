@@ -122,7 +122,7 @@ while True:
 		cv2.imwrite(path, frame)
 		f = open(path, 'r+')
 
-		rows = open('models/synset_words.txt').read().strip().split("\n")
+		rows = open('models/synset_words_edit.txt').read().strip().split("\n")
 		classes = [r[r.find(" ") + 1:].split(",")[0] for r in rows]
 
 		blob = cv2.dnn.blobFromImage(frame, 1, (224, 224), (104, 117, 123))
