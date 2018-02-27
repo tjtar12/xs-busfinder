@@ -78,7 +78,6 @@ while True:
 	if not grabbed:
 		break
 
-	print("show1")
 	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	# resize the frame, convert it to grayscale, and blur it
@@ -89,7 +88,7 @@ while True:
 	else:
 		crop_img = frame[50:150, 150:300]
 
-	frame = crop_img
+	#frame = crop_img
 	frame = imutils.resize(frame, width=500)
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -110,7 +109,7 @@ while True:
 	thresh = cv2.dilate(thresh, None, iterations=2)
 	(_, cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-	
+
 	# loop over the contours
 	for c in cnts:
 		# if the contour is too small, ignore it
