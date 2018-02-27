@@ -61,7 +61,7 @@ else:
 
 # initialize the first frame in the video stream
 firstFrame = None
-delay_feed = False
+#delay_feed = False
 
 # loop over the frames of the video
 while True:
@@ -111,6 +111,7 @@ while True:
 	thresh = cv2.dilate(thresh, None, iterations=2)
 	(_, cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+	continue
 
 	# loop over the contours
 	for c in cnts:
@@ -143,7 +144,7 @@ while True:
 		# loop over the top-5 predictions and display them
 		for (i, idx) in enumerate(idxs):
 			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0. and classes[idx] == 'school bus' and not delay_feed) :
+			if (i == 0 and  preds[0][idx] > 0. and classes[idx] == 'school bus') :
 				text = "Label: {}, {:.2f}%".format(classes[idx],
 					preds[0][idx] * 100)
 				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
@@ -160,7 +161,7 @@ while True:
 				  text= "THE BUS IS COMING!!:tada: "+url
 				)
 
-				delay_feed = True
+				#delay_feed = True
 
 
 			# display the predicted label + associated probability to the
@@ -186,9 +187,9 @@ while True:
 
 	firstFrame = gray
 
-	if delay_feed:
-		time.sleep(2.00)
-		delay_feed = False
+	#if delay_feed:
+	#	time.sleep(2.00)
+	#	delay_feed = False
 
 # cleanup the camera and close any open windows
 camera.release()
