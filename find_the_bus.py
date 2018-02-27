@@ -185,7 +185,7 @@ while True:
 	if key == ord("q"):
 		break
 
-	#firstFrame = gray
+	firstFrame = gray
 
 
 # cleanup the camera and close any open windows
