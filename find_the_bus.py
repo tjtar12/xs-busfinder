@@ -145,8 +145,8 @@ while True:
 		# loop over the top-5 predictions and display them
 		for (i, idx) in enumerate(idxs):
 			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0.1 and classes[idx] == 'school bus') :
-				text = "Label: {}, {:.2f}%".format(classes[idx],
+			if (i == 0 ) :
+				text = "Label: school bus {:.2f}%".format(
 					preds[0][idx] * 100)
 				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
 					0.7, (0, 0, 255), 2)
