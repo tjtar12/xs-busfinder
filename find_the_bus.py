@@ -80,6 +80,7 @@ while True:
 
 	cv2.imshow("Bus Finder - Wide Angle", frame)
 
+	continue
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
