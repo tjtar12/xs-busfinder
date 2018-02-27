@@ -61,8 +61,7 @@ else:
 
 # initialize the first frame in the video stream
 firstFrame = None
-#delay_feed = False
-print("start")
+
 # loop over the frames of the video
 while True:
 	timestamp = datetime.datetime.now()
@@ -78,15 +77,19 @@ while True:
 	if not grabbed:
 		break
 
-	cv2.imshow("Bus Finder - Wide Angle", frame)
+	#cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
+
+	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	if args.get("video", None) is None:
 		crop_img = frame[100:200, 250:350]
 	else:
 		crop_img = frame[50:150, 150:300]
+
+	cv2.imshow("Crop Test", crop_img)
 
 	#frame = crop_img
 	frame = imutils.resize(frame, width=500)
@@ -158,8 +161,6 @@ while True:
 				  text= "THE BUS IS COMING!!:tada: "+url
 				)
 
-				#delay_feed = True
-
 
 			# display the predicted label + associated probability to the
 			# console
@@ -174,8 +175,6 @@ while True:
 		(10, frame.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
 	# show the frame and record if the user presses a key
-	#cv2.imshow("Original", firstFrame)
-	print("show2")
 	cv2.imshow("Bus Finder Feed", frame)
 	key = cv2.waitKey(1) & 0xFF
 
@@ -185,9 +184,6 @@ while True:
 
 	firstFrame = gray
 
-	#if delay_feed:
-	#	time.sleep(2.00)
-	#	delay_feed = False
 
 # cleanup the camera and close any open windows
 camera.release()
