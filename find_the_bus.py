@@ -85,7 +85,7 @@ while True:
 	frame = imutils.resize(frame, width=500)
 
 	if args.get("video", None) is None:
-		crop_img = frame[120:190, 260:330]
+		crop_img = frame[100:200, 250:350]
 	else:
 		crop_img = frame[80:140, 200:275]
 
@@ -142,7 +142,7 @@ while True:
 		# loop over the top-5 predictions and display them
 		for (i, idx) in enumerate(idxs):
 			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0.4 and classes[idx] == 'school bus' and not delay_feed) :
+			if (i == 0 and  preds[0][idx] > 0.2 and classes[idx] == 'school bus' and not delay_feed) :
 				text = "Label: {}, {:.2f}%".format(classes[idx],
 					preds[0][idx] * 100)
 				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
