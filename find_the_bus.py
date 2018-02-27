@@ -119,16 +119,16 @@ while True:
 			continue
 
 
-		path = "../captures/{timestamp}.png".format(timestamp=ts).replace(' ', '')
+		path = "captures/{timestamp}.png".format(timestamp=ts).replace(' ', '')
 		cv2.imwrite(path, frame)
 		f = open(path, 'r+')
 
-		rows = open('../models/synset_words_edit.txt').read().strip().split("\n")
+		rows = open('models/synset_words_edit.txt').read().strip().split("\n")
 		classes = [r[r.find(" ") + 1:].split(",")[0] for r in rows]
 
 		blob = cv2.dnn.blobFromImage(frame, 1, (224, 224), (104, 117, 123))
 
-		net = cv2.dnn.readNetFromCaffe('../models/bvlc_googlenet.prototxt', '../models/bvlc_googlenet.caffemodel')
+		net = cv2.dnn.readNetFromCaffe('models/bvlc_googlenet.prototxt', 'models/bvlc_googlenet.caffemodel')
 
 		net.setInput(blob)
 		start = time.time()
@@ -189,7 +189,7 @@ while True:
 	if delay_feed:
 		time.sleep(2.00)
 		delay_feed = False
-		
+
 # cleanup the camera and close any open windows
 camera.release()
 cv2.destroyAllWindows()
