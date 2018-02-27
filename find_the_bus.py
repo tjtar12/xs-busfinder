@@ -91,8 +91,8 @@ while True:
 
 	#cv2.imshow("Crop Test", crop_img)
 
-	frame = crop_img
-	frame = imutils.resize(frame, width=500)
+	#frame = crop_img
+	frame = imutils.resize(crop_img, width=500)
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	gray = cv2.GaussianBlur(gray, (21, 21), 0)
@@ -182,7 +182,7 @@ while True:
 	if key == ord("q"):
 		break
 
-	firstFrame = gray
+	#firstFrame = gray
 
 
 # cleanup the camera and close any open windows
