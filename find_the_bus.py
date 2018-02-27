@@ -161,12 +161,14 @@ while True:
 				  channel="#schoolbus",
 				  text= "THE BUS IS COMING!!:tada: "+url
 				)
+				print("[INFO] {}. label: school bus, probability: {:.5}".format(i + 1,
+					classes[idx], preds[0][idx]))
+			else :
 
-
-			# display the predicted label + associated probability to the
-			# console
-			print("[INFO] {}. label: {}, probability: {:.5}".format(i + 1,
-				classes[idx], preds[0][idx]))
+				# display the predicted label + associated probability to the
+				# console
+				print("[INFO] {}. label: {}, probability: {:.5}".format(i + 1,
+					classes[idx], preds[0][idx]))
 
 
 
