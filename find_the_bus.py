@@ -77,7 +77,7 @@ while True:
 	if not grabbed:
 		break
 
-	#cv2.imshow("Bus Finder - Wide Angle", frame)
+	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
@@ -89,9 +89,9 @@ while True:
 	else:
 		crop_img = frame[50:150, 150:300]
 
-	cv2.imshow("Crop Test", crop_img)
+	#cv2.imshow("Crop Test", crop_img)
 
-	#frame = crop_img
+	frame = crop_img
 	frame = imutils.resize(frame, width=500)
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
