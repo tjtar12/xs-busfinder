@@ -54,13 +54,13 @@ while True:
 		mask = cv2.inRange(frame, lower, upper)
 		output = cv2.bitwise_and(frame, frame, mask = mask)
 
-		# img = cv2.imread('home.jpg')
-		#color = ('b','g','r')
-		#for i,col in enumerate(color):
-		#	histr = cv2.calcHist([frame],[i],None,[256],[0,256])
-		#	plt.plot(histr,color = col)
-		#	plt.xlim([0,256])
-		#plt.show()
+		#img = cv2.imread('home.jpg')
+		color = ('b','g','r')
+		for i,col in enumerate(color):
+			histr = cv2.calcHist([frame],[i],None,[256],[0,256])
+			plt.plot(histr,color = col)
+			plt.xlim([0,256])
+		plt.show()
 
 
 		# show the images

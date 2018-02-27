@@ -14,8 +14,8 @@ image = cv2.imread(args["image"])
 
 # define the list of boundaries BGR
 boundaries = [
-#	([165,105,245], [178,116,252])
-([0,100,200], [10,150,252])
+	([100,180,245], [120,210,255])
+#([160,245,100], [170,255,120])
 ]
 
 # loop over the boundaries

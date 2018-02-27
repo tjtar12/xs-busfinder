@@ -78,8 +78,10 @@ while True:
 	if not grabbed:
 		break
 
+    cv2.imshow("Bus Finder - Wide Angle", frame)
+
 	#crop_img = frame[200:300, 385:522]
-	crop_img = frame[80:140, 200:275]
+	#crop_img = frame[80:140, 200:275]
 	#cv2.imshow("cropped", crop_img)
 
 	#frame = crop_img
@@ -87,11 +89,14 @@ while True:
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 
-	#crop_img = frame[200:300, 385:522]
-	crop_img = frame[80:140, 200:275]
+    if args.get("video", None) is None:
+        crop_img = frame[130:180, 270:320]
+    else:
+        crop_img = frame[80:140, 200:275]
+
 	frame = crop_img
 	frame = imutils.resize(frame, width=500)
-	#cv2.imshow("cropped", crop_img)
+
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	gray = cv2.GaussianBlur(gray, (21, 21), 0)
@@ -123,7 +128,7 @@ while True:
 		cv2.imwrite(path, frame)
 		f = open(path, 'r+')
 
-		rows = open('models/synset_words_edit.txt').read().strip().split("\n")
+		rows = open('models/synset_words.txt').read().strip().split("\n")
 		classes = [r[r.find(" ") + 1:].split(",")[0] for r in rows]
 
 		blob = cv2.dnn.blobFromImage(frame, 1, (224, 224), (104, 117, 123))
