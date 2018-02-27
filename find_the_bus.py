@@ -85,7 +85,7 @@ while True:
 	frame = imutils.resize(frame, width=500)
 
 	if args.get("video", None) is None:
-		crop_img = frame[100:200, 250:350]
+		crop_img = frame[180:220, 230:370]
 	else:
 		crop_img = frame[80:140, 200:275]
 
