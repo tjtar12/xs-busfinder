@@ -85,7 +85,7 @@ while True:
 	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	if args.get("video", None) is None:
-		crop_img = frame[90:220, 220:360]
+		crop_img = frame[90:220, 240:360]
 	else:
 		crop_img = frame[50:150, 150:300]
 
@@ -105,7 +105,7 @@ while True:
 	# compute the absolute difference between the current frame and
 	# first frame
 	frameDelta = cv2.absdiff(firstFrame, gray)
-	thresh = cv2.threshold(frameDelta, 127, 255, cv2.THRESH_BINARY)[1]
+	thresh = cv2.threshold(frameDelta, 60, 255, cv2.THRESH_BINARY)[1]
 	cv2.imshow("gray",gray)
 	cv2.imshow("delta",frameDelta)
 	cv2.imshow("Thresh", thresh)
