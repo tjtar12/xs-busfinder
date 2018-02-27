@@ -15,8 +15,9 @@ Requirements and Installation
 We recommend using `PyPI <https://pypi.python.org/pypi>`_ to install Slack Developer Kit for Python
 
 .. code-block:: bash
+
 	git clone https://github.com/tjtar12/xs-busfinder.gitt
-.. code-block:: bash
+
 
 Documentation
 --------------
@@ -33,10 +34,13 @@ Basic Usage
 ------------
 There two methods to executing the script:
   1. With a video file:
+
 .. code-block:: bash
+
     python find_the_bus.py --video samples/bus_trials.mp4
-.. code-block:: bash
+
   2. With live streaming:
+
 .. code-block:: bash
+
     python find_the_bus.py
-.. code-block:: bash
