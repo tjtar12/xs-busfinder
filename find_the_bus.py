@@ -61,6 +61,7 @@ else:
 
 # initialize the first frame in the video stream
 firstFrame = None
+wideFrame = None
 
 # loop over the frames of the video
 while True:
@@ -78,6 +79,7 @@ while True:
 		break
 
 	cv2.imshow("Bus Finder - Wide Angle", frame)
+	wideFrame = frame
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
@@ -120,7 +122,7 @@ while True:
 
 
 		path = "captures/{timestamp}.png".format(timestamp=ts).replace(' ', '')
-		cv2.imwrite(path, frame)
+		cv2.imwrite(path, wideFrame)
 		f = open(path, 'r+')
 
 		rows = open('models/synset_words_edit.txt').read().strip().split("\n")
