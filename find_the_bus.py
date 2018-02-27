@@ -79,11 +79,12 @@ while True:
 		break
 
 
-	cv2.imshow("Bus Finder - Wide Angle", frame)
+
 
 	# resize the frame, convert it to grayscale, and blur it
-	#frame = imutils.resize(frame, width=500)
+	frame = imutils.resize(frame, width=500)
 
+	cv2.imshow("Bus Finder - Wide Angle", frame)
 	if args.get("video", None) is None:
 		crop_img = frame[100:200, 250:350]
 	else:
