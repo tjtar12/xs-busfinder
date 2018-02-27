@@ -85,7 +85,7 @@ while True:
 	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	if args.get("video", None) is None:
-		crop_img = frame[100:200, 250:350]
+		crop_img = frame[90:220, 220:360]
 	else:
 		crop_img = frame[50:150, 150:300]
 
