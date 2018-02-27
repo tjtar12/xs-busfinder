@@ -110,8 +110,7 @@ while True:
 	thresh = cv2.dilate(thresh, None, iterations=2)
 	(_, cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-	continue
-
+	
 	# loop over the contours
 	for c in cnts:
 		# if the contour is too small, ignore it
