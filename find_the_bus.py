@@ -82,16 +82,11 @@ while True:
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 
-	#cv2.imshow("Bus Finder - Wide Angle", frame)
-
 	if args.get("video", None) is None:
 		crop_img = frame[90:220, 240:360]
 	else:
 		crop_img = frame[50:150, 150:300]
 
-	#cv2.imshow("Crop Test", crop_img)
-
-	#frame = crop_img
 	frame = imutils.resize(crop_img, width=500)
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -105,14 +100,14 @@ while True:
 	# compute the absolute difference between the current frame and
 	# first frame
 	frameDelta = cv2.absdiff(firstFrame, gray)
-	thresh = cv2.threshold(frameDelta, 50, 255, cv2.THRESH_BINARY)[1]
-	#cv2.imshow("gray",gray)
-	#cv2.imshow("delta",frameDelta)
-	#cv2.imshow("Thresh", thresh)
+	thresh = cv2.threshold(frameDelta, 50, 255,
+		cv2.THRESH_BINARY)[1]
+
 	# dilate the thresholded image to fill in holes, then find contours
 	# on thresholded image
 	thresh = cv2.dilate(thresh, None, iterations=2)
-	(_, cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+	(_, cnts, _) = cv2.findContours(thresh.copy(),
+		cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 	# loop over the contours
 	for c in cnts:
@@ -148,7 +143,7 @@ while True:
 		# loop over the top-5 predictions and display them
 		for (i, idx) in enumerate(idxs):
 			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0.5 and classes[idx] == 'school bus') :
+			if (i == 0 and  preds[0][idx] > 0.1 and classes[idx] == 'school bus') :
 				text = "Label: {}, {:.2f}%".format(classes[idx],
 					preds[0][idx] * 100)
 				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
