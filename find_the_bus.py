@@ -46,9 +46,9 @@ sc.api_call(
 )
 
 s3 = boto3.client(
-    's3',
-    aws_access_key_id=aws_access_key,
-    aws_secret_access_key=aws_secret_access_key
+	's3',
+	aws_access_key_id=aws_access_key,
+	aws_secret_access_key=aws_secret_access_key
 )
 
 # if the video argument is None, then we are reading from webcam
@@ -79,15 +79,15 @@ while True:
 		break
 
 
-    cv2.imshow("Bus Finder - Wide Angle", frame)
+	cv2.imshow("Bus Finder - Wide Angle", frame)
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 
-    if args.get("video", None) is None:
-        crop_img = frame[130:180, 270:320]
-    else:
-        crop_img = frame[80:140, 200:275]
+	if args.get("video", None) is None:
+		crop_img = frame[130:180, 270:320]
+	else:
+		crop_img = frame[80:140, 200:275]
 
 	frame = crop_img
 	frame = imutils.resize(frame, width=500)
