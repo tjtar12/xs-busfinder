@@ -27,7 +27,7 @@ from slackclient import SlackClient
 # GRAB CMD LINE ARGUMENTS
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
-ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
+ap.add_argument("-a", "--min-area", type=int, default=250, help="minimum area size")
 args = vars(ap.parse_args())
 
 # DEFINE TOKENS (SUPPLIED AT RUNTIME)
@@ -87,7 +87,7 @@ while True:
 	if args.get("video", None) is None:
 		crop_img = frame[100:200, 250:350]
 	else:
-		crop_img = frame[60:150, 180:290]
+		crop_img = frame[50:150, 150:300]
 
 	frame = crop_img
 	frame = imutils.resize(frame, width=500)
