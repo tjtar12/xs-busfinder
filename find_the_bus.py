@@ -114,58 +114,7 @@ while True:
 
 
 	# loop over the contours
-	for c in cnts:
-		# if the contour is too small, ignore it
-		if cv2.contourArea(c) < args["min_area"]:
-			continue
 
-
-		path = "captures/{timestamp}.png".format(timestamp=ts).replace(' ', '')
-		cv2.imwrite(path, frame)
-		f = open(path, 'r+')
-
-		rows = open('models/synset_words_edit.txt').read().strip().split("\n")
-		classes = [r[r.find(" ") + 1:].split(",")[0] for r in rows]
-
-		blob = cv2.dnn.blobFromImage(frame, 1, (224, 224), (104, 117, 123))
-
-		net = cv2.dnn.readNetFromCaffe('models/bvlc_googlenet.prototxt', 'models/bvlc_googlenet.caffemodel')
-
-		net.setInput(blob)
-		start = time.time()
-		preds = net.forward()
-		end = time.time()
-		print("[INFO] classification took {:.5} seconds".format(end - start))
-
-		# sort the indexes of the probabilities in descending order (higher
-		# probabilitiy first) and grab the top-5 predictions
-		idxs = np.argsort(preds[0])[::-1][:5]
-
-		# loop over the top-5 predictions and display them
-		for (i, idx) in enumerate(idxs):
-			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0. and classes[idx] == 'school bus') :
-				text = "Label: {}, {:.2f}%".format(classes[idx],
-					preds[0][idx] * 100)
-				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
-					0.7, (0, 0, 255), 2)
-				# display the output image
-				cv2.imshow("Image", frame)
-
-				s3.upload_fileobj( f, 'xs-schoolbus', path, ExtraArgs={'ACL': 'public-read'})
-				url = "https://s3.amazonaws.com/xs-schoolbus/"+path
-
-				sc.api_call(
-				  "chat.postMessage",
-				  channel="#schoolbus",
-				  text= "THE BUS IS COMING!!:tada: "+url
-				)
-
-
-			# display the predicted label + associated probability to the
-			# console
-			print("[INFO] {}. label: {}, probability: {:.5}".format(i + 1,
-				classes[idx], preds[0][idx]))
 
 
 
