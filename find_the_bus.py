@@ -106,6 +106,8 @@ while True:
 	# first frame
 	frameDelta = cv2.absdiff(firstFrame, gray)
 	thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+	cv2.imshow("gray",gray)
+	cv2.imshow("delta",frameDelta)
 	cv2.imshow("Thresh", thresh)
 	# dilate the thresholded image to fill in holes, then find contours
 	# on thresholded image
@@ -115,7 +117,7 @@ while True:
 	# loop over the contours
 	for c in cnts:
 		# if the contour is too small, ignore it
-		print(cv2.contourArea(c))
+		#print(cv2.contourArea(c))
 		break
 		if cv2.contourArea(c) < args["min_area"]:
 			continue
