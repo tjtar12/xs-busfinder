@@ -883,7 +883,7 @@ n04532670 viaduct
 n04536866 violin, fiddle
 n04540053 volleyball
 n04542943 waffle iron
-n04548280 wall clock
+n04548280 school bus
 n04548362 wallet, billfold, notecase, pocketbook
 n04550184 wardrobe, closet, press
 n04552348 warplane, military plane

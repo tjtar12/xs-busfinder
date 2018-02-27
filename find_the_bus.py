@@ -142,7 +142,7 @@ while True:
 		# loop over the top-5 predictions and display them
 		for (i, idx) in enumerate(idxs):
 			# draw the top prediction on the input image
-			if (i == 0 and  preds[0][idx] > 0.5 and classes[idx] == 'school bus' and not delay_feed) :
+			if (i == 0 and  preds[0][idx] > 0.4 and classes[idx] == 'school bus' and not delay_feed) :
 				text = "Label: {}, {:.2f}%".format(classes[idx],
 					preds[0][idx] * 100)
 				cv2.putText(frame, text, (5, 25),  cv2.FONT_HERSHEY_SIMPLEX,
