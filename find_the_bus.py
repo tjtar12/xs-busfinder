@@ -105,7 +105,7 @@ while True:
 	# compute the absolute difference between the current frame and
 	# first frame
 	frameDelta = cv2.absdiff(firstFrame, gray)
-	thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+	thresh = cv2.threshold(frameDelta, 127, 255, cv2.THRESH_BINARY)[1]
 	cv2.imshow("gray",gray)
 	cv2.imshow("delta",frameDelta)
 	cv2.imshow("Thresh", thresh)
