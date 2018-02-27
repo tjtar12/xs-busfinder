@@ -80,7 +80,7 @@ while True:
 
 	#crop_img = frame[200:300, 385:522]
 	crop_img = frame[80:140, 200:275]
-	cv2.imshow("cropped", crop_img)
+	#cv2.imshow("cropped", crop_img)
 
 	#frame = crop_img
 
@@ -176,8 +176,8 @@ while True:
 		(10, frame.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
 	# show the frame and record if the user presses a key
-	cv2.imshow("Original", firstFrame)
-	cv2.imshow("Security Feed", frame)
+	#cv2.imshow("Original", firstFrame)
+	cv2.imshow("Bus Finder Feed", frame)
 	key = cv2.waitKey(1) & 0xFF
 
 	# if the `q` key is pressed, break from the lop
