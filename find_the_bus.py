@@ -116,6 +116,7 @@ while True:
 	for c in cnts:
 		# if the contour is too small, ignore it
 		print(cv2.contourArea(c))
+		break
 		if cv2.contourArea(c) < args["min_area"]:
 			continue
 
