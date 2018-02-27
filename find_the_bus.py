@@ -62,7 +62,7 @@ else:
 # initialize the first frame in the video stream
 firstFrame = None
 #delay_feed = False
-
+print("start")
 # loop over the frames of the video
 while True:
 	timestamp = datetime.datetime.now()
@@ -78,14 +78,11 @@ while True:
 	if not grabbed:
 		break
 
+	print("show1")
 	cv2.imshow("Bus Finder - Wide Angle", frame)
-
-	continue
 
 	# resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
-
-
 
 	if args.get("video", None) is None:
 		crop_img = frame[100:200, 250:350]
@@ -180,6 +177,7 @@ while True:
 
 	# show the frame and record if the user presses a key
 	#cv2.imshow("Original", firstFrame)
+	print("show2")
 	cv2.imshow("Bus Finder Feed", frame)
 	key = cv2.waitKey(1) & 0xFF
 
